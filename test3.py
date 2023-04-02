@@ -41,8 +41,9 @@ class LoveScene(Scene):
         circle2.shift(UP*0.5 + RIGHT*0.5)
         triangle.rotate(-PI/2 + PI/6)
         triangle.shift(DOWN*0.8)
-        triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6)))
-        triangle.shift(RIGHT*0.05)
+        #triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6)))
+        #triangle.shift(RIGHT*0.2)
+        triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6) - triangle.get_critical_point(ORIGIN)[0]))
         # Объединяем их в один объект
         heart = VGroup(circle1, circle2, triangle)
 
