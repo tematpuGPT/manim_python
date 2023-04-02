@@ -1,5 +1,5 @@
 from manim import *
-from manim.mobject.geometry import Heart
+#from manim.mobject.geometry import Heart
 class LoveScene(Scene):
     def construct(self):
         # Создаем два слова
