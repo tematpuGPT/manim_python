@@ -1,5 +1,5 @@
 from manim import *
-from manim.mobject.geometry import QuadraticBezier
+# from manim.mobject.geometry import QuadraticBezier
 class HeartScene(Scene):
     def construct(self):
         # Создаем два слова
