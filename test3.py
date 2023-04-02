@@ -1,6 +1,6 @@
 from manim import *
 
-class LoveScene(Scene):
+class HeartScene(Scene):
     def construct(self):
         # Создаем два слова
         artem = Text("Артём")
@@ -31,22 +31,15 @@ class LoveScene(Scene):
         self.play(letters.animate.arrange_in_grid(rows=1, buff=0.1))
         self.wait()
 
-        # Создаем два круга и треугольник
-        circle1 = Circle(color=RED, fill_opacity=1)
-        circle2 = Circle(color=RED, fill_opacity=1)
-        triangle = Triangle(color=RED, fill_opacity=1)
+        # Создаем две квадратичные кривые Безье
+        curve1 = QuadraticBezier([UP*2 + LEFT*2, UP*3 + RIGHT*2, DOWN*2 + RIGHT*2])
+        curve2 = QuadraticBezier([DOWN*2 + RIGHT*2, DOWN*3 + LEFT*2, UP*2 + LEFT*2])
 
-        # Сдвигаем их так чтобы они образовывали сердце
-        circle1.shift(UP*0.5 + LEFT*0.5)
-        circle2.shift(UP*0.5 + RIGHT*0.5)
-        triangle.scale(1.2)
-        triangle.rotate(-PI/2 + PI/6)
-        triangle.shift(DOWN*1)
-        #triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6)))
-        #triangle.shift(RIGHT*0.2)
-        triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6) - triangle.get_critical_point(ORIGIN)[0]))
         # Объединяем их в один объект
-        heart = VGroup(circle1, circle2, triangle)
+        heart = VGroup(curve1, curve2)
+
+        # Заливаем его красным цветом
+        heart.set_fill(color=RED, opacity=1)
 
         # Показываем сердце
         self.play(FadeOut(letters), FadeIn(heart))
