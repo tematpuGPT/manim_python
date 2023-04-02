@@ -39,9 +39,9 @@ class LoveScene(Scene):
         # Сдвигаем их так чтобы они образовывали сердце
         circle1.shift(UP*0.5 + LEFT*0.5)
         circle2.shift(UP*0.5 + RIGHT*0.5)
-        triangle.scale(0.8)
+        triangle.scale(1.2)
         triangle.rotate(-PI/2 + PI/6)
-        triangle.shift(DOWN*0.8)
+        triangle.shift(DOWN*1)
         #triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6)))
         #triangle.shift(RIGHT*0.2)
         triangle.shift(RIGHT*(np.sqrt(3)/2 - np.cos(PI/6) - triangle.get_critical_point(ORIGIN)[0]))
