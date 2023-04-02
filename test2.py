@@ -123,7 +123,8 @@ class Multiplication(Scene):
                     # Получаем цифру как текст
                     final_digit = final_result_digits[k]
                     # Получаем соответствующие цифры всех промежуточных результатов как тексты
-                    partial_digits = [partial[k] for partial in partial_results]
+                    # Учитываем сдвиг вправо для каждого промежуточного результата
+                    partial_digits = [partial[k + i] for i, partial in enumerate(partial_results)]
                     # Создаем копии этих цифр для анимации перемещения
                     partial_digits_copies = [digit.copy() for digit in partial_digits]
                     # Добавляем копии на сцену поверх оригинальных цифр
