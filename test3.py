@@ -39,7 +39,7 @@ class LoveScene(Scene):
         # Сдвигаем их так чтобы они образовывали сердце
         circle1.shift(UP*0.5 + LEFT*0.5)
         circle2.shift(UP*0.5 + RIGHT*0.5)
-        triangle.rotate(-PI/2)
+        triangle.rotate(-PI/2 - PI/6)
         triangle.shift(DOWN*0.8)
 
         # Объединяем их в один объект
