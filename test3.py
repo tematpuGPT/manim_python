@@ -37,7 +37,8 @@ class HeartScene(Scene):
                 2 * np.cos(t) - np.cos(2 * t),
                 2 * np.sin(t) - np.sin(2 * t),
                 0
-            ]), t_min=0, t_max=TAU, color=RED
+            # ]), t_min=0, t_max=TAU, color=RED
+            ]), t_max=TAU, color=RED
         )
         # Заливаем кардиоиду красным цветом
         cardioid.set_fill(color=RED, opacity=1)
