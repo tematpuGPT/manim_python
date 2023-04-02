@@ -32,8 +32,20 @@ class LoveScene(Scene):
         self.play(letters.animate.arrange_in_grid(rows=1, buff=0.1))
         self.wait()
 
-        # Показываем большое сердечко
-        heart = Heart(color=RED)
-        heart.scale(2)
+        # Создаем два круга и треугольник
+        circle1 = Circle(color=RED)
+        circle2 = Circle(color=RED)
+        triangle = Triangle(color=RED)
+
+        # Сдвигаем их так чтобы они образовывали сердце
+        circle1.shift(UP*0.5 + LEFT*0.5)
+        circle2.shift(UP*0.5 + RIGHT*0.5)
+        triangle.rotate(-PI/4)
+        triangle.shift(DOWN*0.8)
+
+        # Объединяем их в один объект
+        heart = VGroup(circle1, circle2, triangle)
+
+        # Показываем сердце
         self.play(FadeOut(letters), FadeIn(heart))
         self.wait()
