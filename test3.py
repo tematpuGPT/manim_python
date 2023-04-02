@@ -30,17 +30,20 @@ class HeartScene(Scene):
         # Собираем буквы в одну точку
         self.play(letters.animate.arrange_in_grid(rows=1, buff=0.1))
         self.wait()
+        
+        # Создаем кардиоиду с помощью параметрических уравнений
+        cardioid = ParametricFunction(
+            lambda t: np.array([
+                2 * np.cos(t) - np.cos(2 * t),
+                2 * np.sin(t) - np.sin(2 * t),
+                0
+            ]), t_min=0, t_max=TAU, color=RED
+        )
+        # Заливаем кардиоиду красным цветом
+        cardioid.set_fill(color=RED, opacity=1)
+        
+        # Масштабируем и перемещаем кардиоиду над буквами
+        cardioid.scale(0.5).shift(UP*2)
 
-        # Создаем две квадратичные кривые Безье
-        curve1 = QuadraticBezier([UP*2 + LEFT*2, UP*3 + RIGHT*2, DOWN*2 + RIGHT*2])
-        curve2 = QuadraticBezier([DOWN*2 + RIGHT*2, DOWN*3 + LEFT*2, UP*2 + LEFT*2])
-
-        # Объединяем их в один объект
-        heart = VGroup(curve1, curve2)
-
-        # Заливаем его красным цветом
-        heart.set_fill(color=RED, opacity=1)
-
-        # Показываем сердце
-        self.play(FadeOut(letters), FadeIn(heart))
-        self.wait()
+        # Показываем сердце на экране
+        self.play(FadeIn(cardioid))
