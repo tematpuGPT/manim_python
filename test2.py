@@ -64,7 +64,8 @@ class Multiplication(Scene):
                 # Получаем цифру как текст
                 result_digit = partial_result_digits[j]
                 # Получаем соответствующие цифры первого и второго числа как тексты
-                num1_digit = digits1[-(j + 1) - i]
+                # Учитываем сдвиг влево для первого числа
+                num1_digit = digits1[-(j + 1) - i - (len(num1_str) - len(partial_result_str))]
                 num2_digit = digits2[i]
                 # Создаем копии этих цифр для анимации перемещения
                 num1_digit_copy = num1_digit.copy()
